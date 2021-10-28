@@ -45,7 +45,7 @@ class TestInterface:
             ch.pack()
             self.checkbtn_list.append(ch)
 
-    # очистка окна
+    # очистка окна от галочек
     def remove_check_btn(self):
         if self.checkbtn_list:
             for ch in self.checkbtn_list:
