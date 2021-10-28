@@ -4,13 +4,15 @@ from core import test
 
 # интерфейс для теста
 class TestInterface:
+    """Class Interface for programme QuestTest"""
+
     def __init__(self, test):
         self.root = Tk()
         self.root.title(test.title)
-        self.root.geometry("900x300")
-        self.font = "Arial 12 bold"
+        self.root.geometry("850x350")
+        self.font = "Helvetica 12 bold"
         self.lbl_text = StringVar()
-        self.lbl_text.set('Для начала теста нажмите "Старт"')
+        self.lbl_text.set('{}\nДля начала нажмите "Старт"'.format(test.title))
         self.lbl = Label(textvariable=self.lbl_text, font=self.font, wraplength=600)
         self.lbl.pack(side=TOP)
         self.checkbtn_list = []
@@ -18,9 +20,9 @@ class TestInterface:
         self.variant = StringVar()
         self.variant.set(0)
         self.n = 0
-        self.lbl_checked = Label(font="Arial 12 bold")
+        self.lbl_checked = Label(font="Helvetica 12 italic")
         self.lbl_checked.pack(side=BOTTOM)
-        self.btn = Button(text="Старт", font="Arial 12 bold", command=self.change_lbl_text)
+        self.btn = Button(text="Старт", font="Helvetica 12 bold", command=self.change_lbl_text)
         self.btn.pack(side=BOTTOM)
         self.root.mainloop()
 
@@ -38,7 +40,7 @@ class TestInterface:
     # создание выбора через галочку
     def set_check_btn(self):
         for key, value in test.test_question_list[self.n].variant_of_answer.items():
-            ch = Checkbutton(text="{}) {}".format(key, value), font="Arial 12 bold", onvalue=key, variable=self.variant,
+            ch = Checkbutton(text="{}) {}".format(key, value), font="Helvetica 12", onvalue=key, variable=self.variant,
                              command=self.checked)
             ch.pack()
             self.checkbtn_list.append(ch)
@@ -64,9 +66,9 @@ class TestInterface:
         if self.variant.get() == test.test_question_list[self.n].correct_variant:
             self.score += 1
             self.btn.config(state=NORMAL)
-            self.lbl_checked.config(text="Правильно\nНабрано баллов: {} / {}".format(self.score, self.n + 1))
+            self.lbl_checked.config(text="Правильно!\nНабрано баллов: {} / {}".format(self.score, self.n + 1))
         else:
-            self.lbl_checked.config(text="Вы ошиблись\nНабрано баллов: {} / {}".format(self.score, self.n + 1))
+            self.lbl_checked.config(text="Вы ошиблись.\nНабрано баллов: {} / {}".format(self.score, self.n + 1))
             self.btn.config(state=NORMAL)
         self.change_check_btn()
 
@@ -76,7 +78,7 @@ class TestInterface:
         self.score = 0
         self.variant.set(0)
         self.remove_check_btn()
-        self.lbl_text.set('Для начала теста нажмите "Старт"')
+        self.lbl_text.set('{}\nДля начала нажмите "Старт"'.format(test.title))
         self.lbl_checked.config(text='')
         self.btn.config(text="Старт", command=self.change_lbl_text)
 
@@ -90,7 +92,7 @@ class TestInterface:
     # Завершение теста и вывод результата
     def end(self):
         self.remove_check_btn()
-        self.lbl_checked.config(text="Тест завершён\nНабрано баллов: {} / {}".format(self.score, self.n))
-        self.lbl_text.set("Вопросы закончились\nДля прохождения другого случайного теста - перезапустите программу"
-                          "\nДля прохождения теста повторно - нажмите кнопку внизу")
+        self.lbl_checked.config(text="Тест завершён.\nНабрано баллов: {} / {}".format(self.score, self.n))
+        self.lbl_text.set("Вопросы закончились.\nДля прохождения другого случайного теста - перезапустите программу."
+                          "\nДля прохождения теста повторно - нажмите кнопку внизу.")
         self.btn.config(text="Пройти этот тест снова", command=self.reset)

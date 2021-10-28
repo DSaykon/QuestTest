@@ -1,5 +1,7 @@
 # класс Тестовый вопрос
 class TestQuestion:
+    """Class TestQuestion for programme QuestTest"""
+
     def __init__(self, text, correct_variant, variant_of_answer):
         self.text = text
         self.correct_variant = correct_variant
