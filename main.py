@@ -1,4 +1,5 @@
 from interface import *
 
 
-TestInterface(test)
+if __name__ == '__main__':
+    TestInterface(test)
