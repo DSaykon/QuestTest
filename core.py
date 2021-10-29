@@ -12,7 +12,13 @@ class Test:
         self.test_question_list = test_question_list
         self.total_questions = len(test_question_list)
 
-
+a = 0
+while a not in range(1, 10):
+    try:
+        a = int(input("Введите номер теста от 1 до 10.\n1-2 Биология\n3-4 Информатика\n5-6 Логика\n7-8 Социология"
+                      "\n9-10 Физическая культура\n"))
+    except:
+        print("Введите число")
 a = randint(1, 10)
 if a == 1:
     test = Test("Программа тестирования по Биологии", test_1)

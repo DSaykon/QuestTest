@@ -82,7 +82,7 @@ class TestInterface:
     def end(self):
         self.remove_check_btn()
         self.lbl_checked.config(text="Тест завершён.\nНабрано баллов: {} / {}".format(self.score, self.n))
-        self.lbl_text.set("Вопросы закончились.\nДля прохождения другого случайного теста - перезапустите программу."
+        self.lbl_text.set("Вопросы закончились.\nДля прохождения другого теста - перезапустите программу."
                           "\nДля прохождения теста повторно - нажмите кнопку внизу.")
         self.btn.config(text="Пройти этот тест снова", command=self.reset)
 
