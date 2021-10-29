@@ -1,5 +1,6 @@
-from interface import *
-
+from core import *
 
 if __name__ == '__main__':
-    TestInterface(test)
+    root = Tk()
+    TestWindow(root)
+    root.mainloop()
